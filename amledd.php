@@ -2,7 +2,7 @@
 
 //
 // Papurau Newydd Cymru
-// Cyfrif defnydd o eiriau mewn papurau newydd, e.e. Eisteddfod, Dic Sion Dafydd, Father Christmas, Treganna
+// Cyfrif defnydd o eiriau mewn papurau newydd, e.e. Eisteddfod, Dic Sion Dafydd, Father Christmas, Treganna, piles, flatulence
 // Nid yw'r sgript yma yn enghraifft o raglen 'dda'!
 // Mae e wedi cael ei greu yn ystod digwyddiad Hacathon Hanes, mis Mawrth 2019
 //
@@ -105,7 +105,7 @@ echo "Blwyddyn,Nifer,Dyfyniad fel enghraifft,\n";
 for($i = 1804; $i <= 1919; $i++)
 {
     //$canran = $blynyddoedd[$blwyddyn] / $nifer_o_gyhoeddiadau;
-    echo $i . "," . $blynyddoedd[$i] . ",\"" . glanhauDyfyniad($defnydd[$i]) . "\"\n"; //. $canran 
+    echo $i . "," . $blynyddoedd[$i] . ",\"" . glanhauDyfyniad($defnydd[$i]) . "\",\n"; //. $canran 
 }
 
 function glanhauDyfyniad($testun)

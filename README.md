@@ -14,4 +14,4 @@ Creu CSV o nifer o eiriau fesul blwyddyn. Ewch i ffeil allbwn-cyfansymiau.csv am
 
 * [Hacathon Hanes 2019](https://wikimedia.org.uk/wiki/Expert_outreach/Wicimediwr_Cenedlaethol_y_Llyfrgell_Genedlaethol/HacathonHanes2019 )
 * [Syniad gwyliwr ngram Solr](https://docs.google.com/document/d/1xLkNIqrvMH5sUTCqbbxIB-jfq6ZQOZF18Sv8Y9hXzlY/edit)
-
+* [Solr API ar gyfer delweddau](https://docs.google.com/document/d/1qRWa3KHW-50FFrjVNcALQ5CqBrygp2bd1_ZaF9gzdYY/edit)
