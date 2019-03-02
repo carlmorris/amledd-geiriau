@@ -7,7 +7,7 @@
 // Mae e wedi cael ei greu yn ystod digwyddiad Hacathon Hanes, mis Mawrth 2019
 //
 
-echo "Blwyddyn,Nifer o eiriau\n";
+echo "Blwyddyn,Nifer o eiriau,\n";
 for($blwyddyn = 1804; $blwyddyn <= 1919; $blwyddyn++)
 {
     $cyfeiriad = "http://hacathon.lan:8983/solr/papur/select?q=doc_type%3A%22Newspapers-article%22+AND+date_year%3A" . $blwyddyn . "&wt=json&indent=true&stats=true&stats.field=article_word_count";
