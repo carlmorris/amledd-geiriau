@@ -76,7 +76,7 @@ $teitlau = array();
 $defnydd = array();
 for($i = 1804; $i <= 1919; $i++) {
     $blynyddoedd[$i] = 0;
-    $defnydd[$i] = 0;
+    $defnydd[$i] = "";
 }
 
 foreach ($stwffdata->response->docs as &$eitem) {
