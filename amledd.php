@@ -1,4 +1,13 @@
 <?php
+
+//
+// Papurau Newydd Cymru
+// Cyfrif defnydd o eiriau mewn papurau newydd, e.e. Eisteddfod, Dic Sion Dafydd, Father Christmas, Treganna
+// Nid yw'r sgript yma yn enghraifft o raglen 'dda'!
+// Mae e wedi cael ei greu yn ystod digwyddiad Hacathon Hanes, mis Mawrth 2019
+//
+
+
 // full_text:"" AND doc_type: "Newspapers-article" AND category:"Advertising"
 
 $hyddarn = 200; // pa mor hir yw'r dyfyniadau o bapurau newydd (mewn symbolau)
