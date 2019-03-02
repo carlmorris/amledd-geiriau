@@ -1,7 +1,7 @@
 <?php
 // full_text:"" AND doc_type: "Newspapers-article" AND category:"Advertising"
 
-$hyddarn = 60; // pa mor hir yw'r dyfyniadau o bapurau newydd (mewn symbolau)
+$hyddarn = 200; // pa mor hir yw'r dyfyniadau o bapurau newydd (mewn symbolau)
 
 // llinell orchymyn neu weinydd gwe
 if(php_sapi_name() == 'cli') {
@@ -23,8 +23,9 @@ if(php_sapi_name() == 'cli') {
 if(isset($argv[1]))
 	$term_plaen = $argv[1];
 else {
-    echo "Defnydd:\nphp " . $argv[0] . " [gair] [nifer o resi]\n";
-	echo "Mae modd defnyddio hyd at 15037357 o resi. Os nad ydych chi'n rhoi nifer o resi bydd y system yn defnyddio 500 rhes fel prawf.";
+    echo "\nDefnydd:\n\n\tphp " . $argv[0] . " [term] [nifer o resi]\n\n";
+	echo "[term] Eich chwiliad fel testun\n";
+	echo "[nifer o resi] Mae modd defnyddio hyd at 15037357 o resi. Os nad ydych chi'n rhoi nifer o resi bydd y system yn defnyddio 15037357 rhes fel prawf.\n\n";
     exit;
 }
 $term = urlencode($term_plaen);
@@ -32,7 +33,7 @@ $term = urlencode($term_plaen);
 if(isset($argv[2]))
 	$rhesi = $argv[2];
 else {
-    $rhesi = 500;
+    $rhesi = 15037357;
 }
 
 //$rhesi = 15037357;
@@ -80,11 +81,11 @@ foreach ($stwffdata->response->docs as &$eitem) {
     $pos = strpos($testun, $term_plaen);
     
     if($pos + $hyddarn >= strlen($testun))
-        $nifer_o_symbolau = strlen($testun) - $pos;
+        $nifer_o_symbolau = (strlen($testun) - $pos) -1;
     else
         $nifer_o_symbolau = $hyddarn;
         
-    $defnydd[$blwyddyn] = substr($testun, $pos, $nifer_o_symbolau);
+    $defnydd[$blwyddyn] = $testun; //substr($testun, $pos, $nifer_o_symbolau);
     //$teitlau[$teitl]++;
     //echo $blwyddyn . "\n";
     //echo $teitl . $dyddiad . $nifer_o_eiriau . $testun;
@@ -95,5 +96,10 @@ echo "Blwyddyn,Nifer,Dyfyniad fel enghraifft\n";
 for($i = 1804; $i <= 1919; $i++)
 {
     //$canran = $blynyddoedd[$blwyddyn] / $nifer_o_gyhoeddiadau;
-    echo $i . "," . $blynyddoedd[$i] . "," . $defnydd[$i] . "\n"; //. $canran 
+    echo $i . "," . $blynyddoedd[$i] . ",\"" . glanhauDyfyniad($defnydd[$i]) . "\"\n"; //. $canran 
+}
+
+function glanhauDyfyniad($testun)
+{
+    return preg_replace('/[^a-z0-9]/i', ' ', $testun);
 }
