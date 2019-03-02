@@ -1,7 +1,7 @@
 <?php
 // full_text:"" AND doc_type: "Newspapers-article" AND category:"Advertising"
 
-$hyddarn = 60;
+$hyddarn = 60; // pa mor hir yw'r dyfyniadau o bapurau newydd (mewn symbolau)
 
 // llinell orchymyn neu weinydd gwe
 if(php_sapi_name() == 'cli') {
@@ -20,9 +20,23 @@ if(php_sapi_name() == 'cli') {
 //$term_plaen = "Father Christmas";
 //$term = "Father+Christmas";
 
-$term_plaen = "Dick Sion";
-$term = "Dick+Sion";
-$rhesi = 15037357;
+if(isset($argv[1]))
+	$term_plaen = $argv[1];
+else {
+    echo "Defnydd:\nphp " . $argv[0] . " [gair] [nifer o resi]\n";
+	echo "Mae modd defnyddio hyd at 15037357 o resi. Os nad ydych chi'n rhoi nifer o resi bydd y system yn defnyddio 500 rhes fel prawf.";
+    exit;
+}
+$term = urlencode($term_plaen);
+
+if(isset($argv[2]))
+	$rhesi = $argv[2];
+else {
+    $rhesi = 500;
+}
+
+//$rhesi = 15037357;
+
 $stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=" . $rhesi ."&wt=json&indent=true";
 //$stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=15037357&wt=json&indent=true";
 //$stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=2014228&wt=json&indent=true";
@@ -77,7 +91,7 @@ foreach ($stwffdata->response->docs as &$eitem) {
     //blynyddoedd
 }
 
-echo "Blwyddyn,Nifer\n";
+echo "Blwyddyn,Nifer,Dyfyniad fel enghraifft\n";
 for($i = 1804; $i <= 1919; $i++)
 {
     //$canran = $blynyddoedd[$blwyddyn] / $nifer_o_gyhoeddiadau;
