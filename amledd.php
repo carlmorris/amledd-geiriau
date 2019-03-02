@@ -93,15 +93,15 @@ foreach ($stwffdata->response->docs as &$eitem) {
         $nifer_o_symbolau = (strlen($testun) - $pos) -1;
     else
         $nifer_o_symbolau = $hyddarn;
-        
-    $defnydd[$blwyddyn] = $testun; //substr($testun, $pos, $nifer_o_symbolau);
+
+    if(strlen($defnydd[$blwyddyn]) < 5) $defnydd[$blwyddyn] = substr($testun, $pos, $nifer_o_symbolau);
     //$teitlau[$teitl]++;
     //echo $blwyddyn . "\n";
     //echo $teitl . $dyddiad . $nifer_o_eiriau . $testun;
     //blynyddoedd
 }
 
-echo "Blwyddyn,Nifer,Dyfyniad fel enghraifft\n";
+echo "Blwyddyn,Nifer,Dyfyniad fel enghraifft,\n";
 for($i = 1804; $i <= 1919; $i++)
 {
     //$canran = $blynyddoedd[$blwyddyn] / $nifer_o_gyhoeddiadau;
