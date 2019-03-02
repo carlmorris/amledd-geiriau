@@ -7,6 +7,18 @@
 // Mae e wedi cael ei greu yn ystod digwyddiad Hacathon Hanes, mis Mawrth 2019
 //
 
+$taenlen="allbwn-cyfansymiau.csv";
+if (($handle = fopen($taenlen, "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+		$taenlen_data[]=$data;
+	}
+    fclose($handle);
+}
+else
+    die("Problem yn darllen CSV");
+
+//for($j = 0; $j < 5; $j++)
+    //echo $taenlen_data[$j][0] . " " . $taenlen_data[$j][1] . "\n";
 
 // full_text:"" AND doc_type: "Newspapers-article" AND category:"Advertising"
 
@@ -71,12 +83,14 @@ $stwffdata = json_decode($stwffjson);
 //fersiwn lleol $stwffdata = file_get_contents($solr_lleol);
 //var_dump($stwffdata->response->docs);
 
+$cyfansymiau = array();
 $blynyddoedd = array();
 $teitlau = array();
 $defnydd = array();
 for($i = 1804; $i <= 1919; $i++) {
     $blynyddoedd[$i] = 0;
     $defnydd[$i] = "";
+    $cyfansymiau[$i] = $taenlen_data[($i - 1803)][1];
 }
 
 foreach ($stwffdata->response->docs as &$eitem) {
@@ -101,11 +115,16 @@ foreach ($stwffdata->response->docs as &$eitem) {
     //blynyddoedd
 }
 
-echo "Blwyddyn,Nifer,Dyfyniad fel enghraifft,\n";
+echo "Blwyddyn,Nifer,Cyfanswm o eiriau yn y flwyddyn hon,Canran o eiriau,Dyfyniad fel enghraifft,\n";
 for($i = 1804; $i <= 1919; $i++)
 {
     //$canran = $blynyddoedd[$blwyddyn] / $nifer_o_gyhoeddiadau;
-    echo $i . "," . $blynyddoedd[$i] . ",\"" . glanhauDyfyniad($defnydd[$i]) . "\",\n"; //. $canran 
+    if($cyfansymiau[$i] == 0)
+        $canran = 0;
+    else
+        $canran = (float) (100 * $blynyddoedd[$i]) / $cyfansymiau[$i];
+        
+    echo $i . "," . $blynyddoedd[$i] . "," . $cyfansymiau[$i] . "," . $canran . ",\"" . glanhauDyfyniad($defnydd[$i]) . "\",\n"; //. $canran 
 }
 
 function glanhauDyfyniad($testun)
