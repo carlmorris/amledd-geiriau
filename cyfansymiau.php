@@ -6,6 +6,8 @@
 // Nid yw'r sgript yma yn enghraifft o raglen 'dda'!
 // Mae e wedi cael ei greu yn ystod digwyddiad Hacathon Hanes, mis Mawrth 2019
 //
+// From the History Hackathon event. A rough script for querying Wales Newspapers Archive API - not reliable nor tidy!
+//
 
 echo "Blwyddyn,Nifer o eiriau,\n";
 for($blwyddyn = 1804; $blwyddyn <= 1919; $blwyddyn++)

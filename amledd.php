@@ -6,6 +6,8 @@
 // Nid yw'r sgript yma yn enghraifft o raglen 'dda'!
 // Mae e wedi cael ei greu yn ystod digwyddiad Hacathon Hanes, mis Mawrth 2019
 //
+// From the History Hackathon event. A rough script for querying Wales Newspapers Archive API - not reliable nor tidy!
+//
 
 $taenlen="allbwn-cyfansymiau.csv";
 if (($handle = fopen($taenlen, "r")) !== FALSE) {
