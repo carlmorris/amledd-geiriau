@@ -17,7 +17,7 @@ if (($handle = fopen($taenlen, "r")) !== FALSE) {
     fclose($handle);
 }
 else
-    die("Problem yn darllen CSV");
+    die("\nProblem yn darllen allbwn-cyfansymiau.csv\n");
 
 //for($j = 0; $j < 5; $j++)
     //echo $taenlen_data[$j][0] . " " . $taenlen_data[$j][1] . "\n";
@@ -25,13 +25,6 @@ else
 // full_text:"" AND doc_type: "Newspapers-article" AND category:"Advertising"
 
 $hyddarn = 200; // pa mor hir yw'r dyfyniadau o bapurau newydd (mewn symbolau)
-
-// llinell orchymyn neu weinydd gwe
-if(php_sapi_name() == 'cli') {
-	$line_break = PHP_EOL;
-} else {
-	$line_break = '<br>';
-}
 
 //article_word_count:[* to 100]
 // chwiliad gorau
@@ -73,11 +66,11 @@ $stwffurl = "http://papurapi.llgc.org.uk/?q=full_text%3A%22" . $term . "%22+AND+
 
 //$stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=%0Adoc_type%3A+%22Newspapers-article%22+AND+category%3A%22Advertising%22&wt=json&indent=true";
 
-$stwffjson = file_get_contents($stwffurl);
+$stwffjson = @file_get_contents($stwffurl);
 	
 // oedd methiant?
 if($stwffjson === FALSE) {
-echo "methiant cysylltu â hacathon.lan :-(" . $line_break;
+echo "Methiant cysylltu â papurapi.llgc.org.uk :-(" . "\n";
 exit;
 }
 
