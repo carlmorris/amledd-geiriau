@@ -61,7 +61,9 @@ else {
 
 //$rhesi = 15037357;
 
-$stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=" . $rhesi ."&wt=json&indent=true";
+$stwffurl = "http://papurapi.llgc.org.uk/?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=" . $rhesi ."&wt=json&indent=true";
+
+//$stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=" . $rhesi ."&wt=json&indent=true";
 //$stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=15037357&wt=json&indent=true";
 //$stwffurl = "http://hacathon.lan:8983/solr/papur/select?q=full_text%3A%22" . $term . "%22+AND+doc_type%3A+%22Newspapers-article%22&rows=2014228&wt=json&indent=true";
 //gwellhad
