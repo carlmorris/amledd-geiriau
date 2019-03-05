@@ -20,6 +20,7 @@ Mae rhai enghreifftiau o ganlyniadau:
 
 * Gwneud siartiau
 * Cymharu termau
+* Cyfyngu'r chwiliad neu dorri'r canlyniadau i lawr, e.e. dim ond cyhoeddiadau Cymraeg
 * Chwilio am dreigladau, fersiynau o dermau fel Dic Siôn Dafydd, Dick Siôn Dafydd ayyb
 
 # Darllen
